@@ -1,8 +1,42 @@
+import { createBrowserRouter } from "react-router-dom";
+import { Home } from "./pages/home";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
+import { Dashboard } from "./pages/dashboard";
+import { New } from "./pages/dashboard/new";
+import { Detail } from "./pages/detail";
+import { Layout } from "./components/Layout";
 
-export default function App(){
-  return(
-    <div>
-      <h1>Ola mundo</h1>
-    </div>
-  )
-}
+const router = createBrowserRouter([
+  {
+    element: <Layout/>,
+    children: [
+      {
+        path: "/",
+        element: <Home/>
+      },
+      {
+         path: "/dashboard",
+        element: <Dashboard/>
+      },
+      {
+        path: "/dashboard/new",
+        element: <New/>
+      },
+      {
+         path: "/car/:id",
+        element: <Detail/>
+      },
+    ]
+  },
+  {
+    path: "/login",
+    element: <Login/>
+  },
+  {
+    path: "/register",
+    element: <Register/>
+  }
+])
+
+export {router};
