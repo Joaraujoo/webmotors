@@ -1,4 +1,4 @@
 # Em construção!
 
 ## Bibliotecas
-React hook form
+React hook form - Schema Validation - zod
