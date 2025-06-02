@@ -1,10 +1,13 @@
 import { Container } from "../../components/container";
 import logo from "../../assets/logo.svg"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Input } from "../../components/input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { auth } from "../../services/firebaseConnection";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 //Definindo o schema de validação com Zod
 const schama = z.object({
@@ -18,14 +21,29 @@ type FormData = z.infer<typeof schama>
 
 export function Register(){
 
+  const navigate = useNavigate()
+  
+
   //Gerencia o formulario
   const { register, handleSubmit, formState: {errors} } = useForm<FormData>({
     resolver: zodResolver(schama),
     mode: "onChange"
   })
 
-  function onSubmit(data: FormData){
+  //Cadastrar o usuario utilizando o firebase
+  async function onSubmit(data: FormData){
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+    .then(async (user) => {
+      await updateProfile(user.user, {
+        displayName: data.name
+      })
 
+      console.log("CADASTRATO COM SUCESSO!")
+      navigate("/dashboard", {replace: true})
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   return(
@@ -70,7 +88,7 @@ export function Register(){
             />
           </div>
 
-          <button type="submit" className="w-full rounded-md h-10 text-white font-medium cursor-pointer bg-[#000] hover:bg-[#202020]">Acessar</button>
+          <button type="submit" className="w-full rounded-md h-10 text-white font-medium cursor-pointer bg-[#000] hover:bg-[#202020]">Cadastrar</button>
             
 
         </form>
