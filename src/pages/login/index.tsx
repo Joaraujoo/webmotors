@@ -6,15 +6,18 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+//Definindo o schema de validação com Zod
 const schama = z.object({
   email: z.string().email("Insira um email valido").nonempty("O campo email é obrigatório!"),
   password: z.string().nonempty("O campo senha é obrigatório!")
 })
 
+//Define o tipo automaticamente com base nas regras do schama
 type FormData = z.infer<typeof schama>
 
 export function Login(){
 
+  //Gerencia o formulario
   const { register, handleSubmit, formState: {errors} } = useForm<FormData>({
     resolver: zodResolver(schama),
     mode: "onChange"
@@ -34,7 +37,7 @@ export function Login(){
             alt="Logo do webCarros" />
         </Link>
 
-        <form className="bg-white max-w-xl w-full rounded-lg" onSubmit={handleSubmit(onSubmit)}>
+        <form className="bg-white max-w-xl w-full rounded-lg p-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-3">
             <Input
               type="email"
@@ -55,10 +58,12 @@ export function Login(){
             />
           </div>
 
-          <button>Acessar</button>
+          <button type="submit" className="w-full rounded-md h-10 text-white font-medium cursor-pointer bg-[#000] hover:bg-[#202020]">Acessar</button>
             
 
         </form>
+
+        <p>Ainda não possui uma conta? <Link to="/register">Cadastre-se</Link></p>
       </div>
 
     </Container>
