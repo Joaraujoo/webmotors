@@ -1,10 +1,12 @@
 import { Container } from "../../components/container";
 import logo from "../../assets/logo.svg"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Input } from "../../components/input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../services/firebaseConnection";
 
 //Definindo o schema de validação com Zod
 const schama = z.object({
@@ -17,6 +19,8 @@ type FormData = z.infer<typeof schama>
 
 export function Login(){
 
+  const navigate = useNavigate()
+
   //Gerencia o formulario
   const { register, handleSubmit, formState: {errors} } = useForm<FormData>({
     resolver: zodResolver(schama),
@@ -24,7 +28,14 @@ export function Login(){
   })
 
   function onSubmit(data: FormData){
-
+    signInWithEmailAndPassword(auth, data.email, data.password)
+    .then(() => {
+      console.log("LOGADO COM SUCESSO")
+      navigate("/dashboard", {replace: true})
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   return(
