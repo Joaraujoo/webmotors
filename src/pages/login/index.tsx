@@ -5,8 +5,9 @@ import { Input } from "../../components/input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../services/firebaseConnection";
+import { useEffect } from "react";
 
 //Definindo o schema de validação com Zod
 const schama = z.object({
@@ -27,6 +28,16 @@ export function Login(){
     mode: "onChange"
   })
 
+  //Desloga o usuario caso estaja logado ao abrir o componente
+  useEffect(() => {
+    async function handleLogout(){
+      await signOut(auth)
+    }
+
+    handleLogout()
+  }, [])
+
+  //Faz o login utilizando o firebase
   function onSubmit(data: FormData){
     signInWithEmailAndPassword(auth, data.email, data.password)
     .then(() => {
