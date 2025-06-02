@@ -28,7 +28,7 @@ export function Login(){
     mode: "onChange"
   })
 
-  //Desloga o usuario caso estaja logado ao abrir o componente
+  //Desloga o usuario caso esteja logado ao abrir o componente
   useEffect(() => {
     async function handleLogout(){
       await signOut(auth)
