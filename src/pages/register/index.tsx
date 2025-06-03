@@ -46,6 +46,7 @@ export function Register(){
     .then(async (user) => {
       await updateProfile(user.user, {
         displayName: data.name
+    
       })
 
       console.log("CADASTRATO COM SUCESSO!")
