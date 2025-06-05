@@ -2,7 +2,7 @@
 export function Dashboard(){
   return(
     <div>
-      <h1>Ola mundo</h1>
+     <h1>Pagina DashBoard</h1>
     </div>
   )
 }
