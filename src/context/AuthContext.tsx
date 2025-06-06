@@ -9,7 +9,7 @@ interface AuthProviderProps {
 type AuthContextDada = {
     signed: boolean;
     loadingAuth: boolean;
-    handleInfoUser: ({name, email, uid}: UserProps) => void;
+    handleInfoUser: ({name, email, uid}: UserProps) => void; //atualiza os dados do usuario
     user: UserProps | null;
 }
 
