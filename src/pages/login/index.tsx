@@ -7,7 +7,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../services/firebaseConnection";
-import { useEffect } from "react";
+import { useEffect} from "react";
 
 //Definindo o schema de validação com Zod
 const schama = z.object({
@@ -20,7 +20,7 @@ type FormData = z.infer<typeof schama>
 
 export function Login(){
 
-  const navigate = useNavigate()
+  const navigate = useNavigate() 
 
   //Gerencia o formulario
   const { register, handleSubmit, formState: {errors} } = useForm<FormData>({

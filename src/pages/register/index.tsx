@@ -8,7 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { auth } from "../../services/firebaseConnection";
 import { createUserWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { useEffect } from "react";
+import { useEffect, useContext} from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 //Definindo o schema de validação com Zod
 const schama = z.object({
@@ -20,8 +21,10 @@ const schama = z.object({
 //Define o tipo automaticamente com base nas regras do schama
 type FormData = z.infer<typeof schama>
 
+
 export function Register(){
 
+  const {handleInfoUser} = useContext(AuthContext)
   const navigate = useNavigate()
   
 
@@ -47,6 +50,12 @@ export function Register(){
       await updateProfile(user.user, {
         displayName: data.name
     
+      })
+
+      handleInfoUser({
+        name: data.name,
+        email: data.email,
+        uid: user.user.uid
       })
 
       console.log("CADASTRATO COM SUCESSO!")
