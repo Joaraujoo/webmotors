@@ -2,10 +2,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import { type ReactNode, createContext, useState, useEffect  } from "react";
 import { auth } from "../services/firebaseConnection";
 
+//Tipagem do provider
 interface AuthProviderProps {
     children: ReactNode;
 }
 
+//Tipagem da exportação do contexto
 type AuthContextDada = {
     signed: boolean;
     loadingAuth: boolean;
@@ -13,22 +15,27 @@ type AuthContextDada = {
     user: UserProps | null;
 }
 
+//Tipagem do Usuario
 interface UserProps{
     uid: string;
     name: string | null;
     email: string | null;
 }
 
+//Contexto
 export const AuthContext = createContext({} as AuthContextDada)
 
+//Provider do contexto
 function AuthProvider({ children }: AuthProviderProps){
 
     const [user, setUser] = useState<UserProps | null>(null)
     const [loadingAuth, setLoadingAuth] = useState(true)
 
+    //Ao carregar o componente, verifica lá no firebase se tem usuario logado
     useEffect(() => {
 
         const unsub = onAuthStateChanged(auth, (user) => {
+            //Passa as informaçao caso tenha usuario logado
             if(user){
                 setUser({
                     uid: user.uid,
@@ -43,6 +50,7 @@ function AuthProvider({ children }: AuthProviderProps){
             }
         })
 
+        //Remove o olheiro caso desmonte ele
         return () => {
             unsub() 
         }
