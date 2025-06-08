@@ -57,6 +57,7 @@ function AuthProvider({ children }: AuthProviderProps){
 
     }, [])
 
+    //Atualiza as informaçoes do usuario
     function handleInfoUser({name, uid, email}: UserProps){
         setUser({
             name,
