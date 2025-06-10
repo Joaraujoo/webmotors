@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { Input } from "../../../components/input";
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
-import { error } from "zod/v4/locales/ar.js";
 
 //Definindo o schema de validação com Zod
 const schama = z.object({
