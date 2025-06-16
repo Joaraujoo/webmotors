@@ -8,6 +8,8 @@ import { Detail } from "./pages/detail";
 import { Layout } from "./components/Layout";
 import { Private } from "./routes/private";
 
+
+
 const router = createBrowserRouter([
   {
     element: <Layout/>,
@@ -38,6 +40,7 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register/>
   }
+  
 ])
 
 export {router};

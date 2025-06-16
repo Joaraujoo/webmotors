@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Container } from "../../components/container";
 import { api } from "../../services/api";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+
 
 interface MotorsProps{
     id: string,
@@ -16,19 +18,42 @@ interface MotorsProps{
 export function Home(){
 
   const [motors, setMotors] = useState<MotorsProps[]>([])
+  const [search, setSearch] = useState("");
+  const [filteredMotors, setFilteredMotors] = useState<MotorsProps[]>([]);
+
 
   useEffect(() => { 
     async function getMotors(){
       const response = await api.get("/motors")
       setMotors(response.data)
+      setFilteredMotors(response.data)
     }
 
     getMotors()
   }, [])
 
-  function handleSearch(){
-    
+  useEffect(() => {
+  if (search.trim() === "") {
+    setFilteredMotors(motors);
   }
+}, [search, motors]);
+
+
+ function handleSearch(){
+
+  if (search.trim() === "") {
+    toast.error("Digite algo para buscar");
+    return;
+  }
+
+  const results = motors.filter((motor) => {
+    return motor.title.toLowerCase().includes(search.toLowerCase())
+
+  })
+
+  
+  setFilteredMotors(results)
+ }
 
   return(
     <Container>
@@ -38,6 +63,13 @@ export function Home(){
             className="w-full border-1 rounded-lg h-9 px-3 outline-none"
             type="text" 
             placeholder="Digite o nome do carro..."  
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+              }
+            }}
           />
           
           <button className="h-9 bg-red-500 px-8 rounded-lg text-white font-medium cursor-pointer" onClick={handleSearch}>Buscar</button>
@@ -46,9 +78,14 @@ export function Home(){
 
       <h1 className="font-bold text-center mt-6 text-1xl mb-4">Carros novos e usados em todo o Brasil</h1>
 
+      
+        {filteredMotors.length === 0 && (
+          <p className="text-center text-zinc-600 mt-6">Nenhum carro encontrado.</p>
+        )}
+
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
 
-       {motors.map((item) => (
+       {filteredMotors.map((item) => (
         <Link to={`/car/${item.title}`}>
         <section className="w-full max-w-90 bg-white rounded-lg hover:scale-105 transition-all mx-auto mb-5">
             <img 
@@ -72,7 +109,8 @@ export function Home(){
         </section>
         </Link>
        ))}
-        
+
+         
       </main>
     </Container>
   )
