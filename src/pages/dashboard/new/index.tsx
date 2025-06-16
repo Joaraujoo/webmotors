@@ -33,7 +33,7 @@ export function New(){
   })
 
   function onSubmit(data: FormData){
-      console.log(data)
+      
   }
 
   return(

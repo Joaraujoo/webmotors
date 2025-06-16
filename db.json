@@ -1,0 +1,94 @@
+{
+"motors": [
+  {
+    "id": 1,
+    "title": "Volkswagen Gol 1.6 MSI",
+    "year_km": "2018 - 45.000 km",
+    "price": 38900,
+    "location": "São Paulo - SP",
+    "description": "Carro em ótimo estado, único dono, revisões em dia. Ideal para o dia a dia.",
+    "cover": "https://i.imgur.com/MQoMebw.png"
+  },
+  {
+    "id": 2,
+    "title": "Honda Civic EXL 2.0",
+    "year_km": "2020 - 29.000 km",
+    "price": 104900,
+    "location": "Belo Horizonte - MG",
+    "description": "Veículo de garagem, baixa quilometragem e excelente desempenho.",
+    "cover": "https://i.imgur.com/JCT2RYK.png"
+  },
+  {
+    "id": 3,
+    "title": "Fiat Argo Drive 1.0",
+    "year_km": "2019 - 67.000 km",
+    "price": 49500,
+    "location": "Curitiba - PR",
+    "description": "Ótimo consumo de combustível, revisado recentemente, pneus novos.",
+    "cover": "https://i.imgur.com/gNZZ3TQ.png"
+  },
+  {
+    "id": 4,
+    "title": "Chevrolet Onix Plus LT 1.0 Turbo",
+    "year_km": "2021 - 18.500 km",
+    "price": 76000,
+    "location": "Salvador - BA",
+    "description": "Completo, com central multimídia, excelente estado de conservação.",
+    "cover": "https://i.imgur.com/1dGfZl7.png"
+  },
+  {
+    "id": 5,
+    "title": "Toyota Corolla XEi 2.0",
+    "year_km": "2017 - 90.000 km",
+    "price": 89000,
+    "location": "Porto Alegre - RS",
+    "description": "Carro confortável e confiável, manutenção sempre feita em concessionária.",
+    "cover": "https://i.imgur.com/8SphVOw.jpeg"
+  },
+  {
+    "id": 6,
+    "title": "Hyundai HB20S Vision 1.6",
+    "year_km": "2022 - 15.000 km",
+    "price": 82500,
+    "location": "Fortaleza - CE",
+    "description": "Veículo sem detalhes, excelente para famílias e uso urbano.",
+    "cover": "https://i.imgur.com/nBdqX7B.png"
+  },
+  {
+    "id": 7,
+    "title": "Renault Kwid Zen 1.0",
+    "year_km": "2020 - 35.000 km",
+    "price": 42000,
+    "location": "Goiânia - GO",
+    "description": "Econômico e fácil de estacionar, ideal para iniciantes e cidade.",
+    "cover": "https://i.imgur.com/c7iUytU.png"
+  },
+  {
+    "id": 8,
+    "title": "Peugeot 208 Allure 1.6",
+    "year_km": "2019 - 50.000 km",
+    "price": 53000,
+    "location": "Recife - PE",
+    "description": "Design moderno, ótimo desempenho e custo-benefício.",
+    "cover": "https://i.imgur.com/D8Qs30z.png"
+  },
+  {
+    "id": 9,
+    "title": "Ford Ka SE 1.5",
+    "year_km": "2018 - 70.000 km",
+    "price": 40900,
+    "location": "Manaus - AM",
+    "description": "Bom estado geral, ar-condicionado gelando, IPVA pago.",
+    "cover": "https://i.imgur.com/xM1iXPP.png"
+  },
+  {
+    "id": 10,
+    "title": "Nissan Versa Advance 1.6",
+    "year_km": "2021 - 22.000 km",
+    "price": 79900,
+    "location": "João Pessoa - PB",
+    "description": "Espaçoso, ótimo para viagens, baixa quilometragem e bem conservado.",
+    "cover": "https://i.imgur.com/9MJeqCv.jpeg"
+  }
+]
+}
