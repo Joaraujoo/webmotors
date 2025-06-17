@@ -5,14 +5,15 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 
-interface MotorsProps{
+export interface MotorsProps{
     id: string,
     title: string,
     year_km: string,
     price: number, 
     location: string,
     description: string,
-    cover: string
+    cover: string,
+    phone: string,
 }
 
 export function Home(){
@@ -86,7 +87,7 @@ export function Home(){
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
 
        {filteredMotors.map((item) => (
-        <Link to={`/car/${item.title}`}>
+        <Link to={`/car/${item.id}`}>
         <section className="w-full max-w-90 bg-white rounded-lg hover:scale-105 transition-all mx-auto mb-5">
             <img 
               className="w-full max-h-72 rounded-t-lg mb-2 object-cover"
