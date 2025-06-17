@@ -31,6 +31,9 @@ export function Detail() {
       <section className="w-full max-w-4xl m-auto px-3">
 
         <main className="bg-white p-3 rounded-lg">
+
+        <img src={motor.cover} alt="" className="m-auto mb-5 rounded-lg w-full max-h-72 object-cover"/>
+
           <div className="flex justify-between mb-5">
             <h1 className="font-bold">{motor.title}</h1>
             <h1 className="font-bold">{motor.price.toLocaleString("pt-BR", {
@@ -42,7 +45,7 @@ export function Detail() {
 
           <div>
 
-            <div className="flex gap-30">
+            <div className="flex gap-35">
               <p>Cidade</p>
               <p>ANO/KM</p>
             </div>
@@ -61,7 +64,13 @@ export function Detail() {
               <p>{motor.phone}</p>
             </div>
 
-            <button className="bg-green-400 text-white w-full p-2 rounded-lg font-bold cursor-pointer flex gap-3 items-center justify-center">Conversar com o vendedor <FaWhatsapp/></button>
+            <a 
+            href={`https://api.whatsapp.com/send?phone=${motor.phone}&text=Olá, tenho interesse no ${motor.title}, podemos falar mais sobre?`}
+            className="bg-green-400 text-white w-full p-2 rounded-lg font-bold cursor-pointer flex gap-3 items-center justify-center"
+            target="blank"
+            >
+              Conversar com o vendedor <FaWhatsapp/>
+            </a>
 
           </div>
         </main>
