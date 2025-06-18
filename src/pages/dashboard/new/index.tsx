@@ -27,13 +27,13 @@ type FormData = z.infer<typeof schama>
 export function New(){
 
    //Gerencia o formulario
-  const {register, handleSubmit, formState: {errors}, reset} = useForm<FormData>({
+  const {register, handleSubmit, formState: {errors}} = useForm<FormData>({
     resolver: zodResolver(schama),
     mode: "onChange"
   })
 
   function onSubmit(data: FormData){
-      
+      console.log(data)
   }
 
   return(
